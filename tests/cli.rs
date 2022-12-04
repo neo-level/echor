@@ -9,3 +9,12 @@ fn dies_no_args() {
         .failure()
         .stderr(predicate::str::contains("USAGE"));
 }
+
+#[test]
+fn runs() {
+    Command::cargo_bin("echor")
+        .unwrap()
+        .arg("hello")
+        .assert()
+        .success();
+}
